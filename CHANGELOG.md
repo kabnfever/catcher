@@ -1,3 +1,6 @@
+## 0.2.8
+* Fix for issue #53 - LocalizationOptions settings are being ignored.
+
 ## 0.2.7
 * Fix for theme problem in error widget
 
