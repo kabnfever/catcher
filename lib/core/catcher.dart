@@ -216,7 +216,15 @@ class Catcher with ReportModeAction {
       if (context != null) {
         locale = Localizations.localeOf(context);
       }
-
+      if (_currentConfig.localizationOptions != null) {
+        for (var options in _currentConfig.localizationOptions) {
+          if (options.languageCode.toLowerCase() ==
+              locale.languageCode.toLowerCase()) {
+            _localizationOptions = options;
+          }
+        }
+      }
+    } else {
       if (_currentConfig.localizationOptions != null) {
         for (var options in _currentConfig.localizationOptions) {
           if (options.languageCode.toLowerCase() ==
