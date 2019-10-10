@@ -1,9 +1,9 @@
 import 'dart:io';
 
 class CatcherUtils {
-  static Future<bool> isInternetConnectionAvailable() async {
+  static Future<bool> isInternetConnectionAvailable(String host) async {
     try {
-      final result = await InternetAddress.lookup('flutter.io');
+      final result = await InternetAddress.lookup(host);
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         return Future.value(true);
       } else {

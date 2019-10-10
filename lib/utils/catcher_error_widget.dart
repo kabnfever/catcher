@@ -31,9 +31,9 @@ class CatcherErrorWidget extends StatelessWidget {
       description = customDescription;
     }
 
-    return Scaffold(
-        body: Container(
-            margin: EdgeInsets.all(20),
+    return Scrollbar(
+        child: SingleChildScrollView(
+            padding: EdgeInsets.only(top: 20, left: 10, right: 10),
             child: Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -43,18 +43,20 @@ class CatcherErrorWidget extends StatelessWidget {
                     color: Colors.red,
                     size: 40,
                   ),
-                  Text(
-                    title,
-                    style: TextStyle(color: Colors.black, fontSize: 25),
-                    textAlign: TextAlign.center,
-                  ),
+                  Text(title,
+                      textScaleFactor: 2.0,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                   ),
-                  Text(
-                    description,
-                    textAlign: TextAlign.center,
+                  Text(description, textAlign: TextAlign.center),
+                  Padding(
+                    padding: EdgeInsets.only(top: 15),
                   ),
+                  Text('Error: ${details.exceptionAsString()}',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left),
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                   ),
@@ -65,13 +67,12 @@ class CatcherErrorWidget extends StatelessWidget {
   Widget _getStackTraceWidget() {
     if (showStacktrace) {
       return SizedBox(
-        height: 200.0,
-        child: ListView.builder(
-          padding: EdgeInsets.all(8.0),
-          itemCount: 1,
-          itemBuilder: (BuildContext context, int index) {
-            return Text(details.exceptionAsString());
-          },
+        height: 250.0,
+        child: ListView(
+          children: [
+            Text('Stack:', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(details.stack.toString()),
+          ],
         ),
       );
     } else {
