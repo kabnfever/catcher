@@ -29,7 +29,7 @@ class DiscordHandler extends ReportHandler {
 
   @override
   Future<bool> handle(Report report) async {
-    if (!(await CatcherUtils.isInternetConnectionAvailable())) {
+    if (!(await CatcherUtils.isInternetConnectionAvailable(flutterHost))) {
       _printLog("No internet connection available");
       return false;
     }

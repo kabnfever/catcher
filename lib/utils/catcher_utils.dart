@@ -1,5 +1,6 @@
 import 'dart:io';
 
+const String flutterHost = 'flutter.io';
 class CatcherUtils {
   static Future<bool> isInternetConnectionAvailable(String host) async {
     try {
